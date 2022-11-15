@@ -38,8 +38,6 @@ SINTAXE DOS COMANDOS: [comando] [opções] [argumento]. Exemplo: rm (comando) -r
 
 -   Digitar "!!" no terminal faz seu último comando digitado ser executado novamente.
 
----
-
 ## 4. REDIRECIONAMENTO E MANIPULAÇÃO DE ARQUIVOS
 
 -   Ao criar um arquivo vazio com o comando _touch_, pode-se usar o editor de texto "**nano**" para inserir conteúdo diretamente no arquivo
@@ -56,33 +54,57 @@ SINTAXE DOS COMANDOS: [comando] [opções] [argumento]. Exemplo: rm (comando) -r
     ### 4.2 COMANDOS DE REDIRECIONAMENTO
     #### 4.2.1. **Operador >**
 -   Atribui a saída de um comando para dentro de um novo arquivo. Ex.: **head -n 5 fundamentos-linux.md > introducao-linux.md**
--   O comando acima pega, com o comando "head", as 5 primeiras linhas de um arquivo e as envia para um novo arquivo chamado "introducao-linux.md"
+    -   O comando acima pega, com o comando "head", as 5 primeiras linhas de um arquivo e as envia para um novo arquivo chamado "introducao-linux.md"
 -   Ao usar este operador, todo o conteúdo antigo do arquivo é apagado e o novo conteúdo é escrito.
 
     #### 4.2.2. **Operador >>**
 
 -   Mesmo propósito do ">". A diferença é que este operador **não** sobrescreve o conteúdo anterior. Ele **concatena**.
 -   Exemplo: **head fundamentos-linux.md && tail -n 4 fundamentos-linux.md >> introducao-linux.md**.
--   O comando acima vai mandar para o arquivo "introducao-linux.md" (criado anteriormente) as 4 últimas linhas das 10 selecionadas pelo comando "head" (engloba apenas o capítulo 2).
+    -   O comando acima vai mandar para o arquivo "introducao-linux.md" (criado anteriormente) as 4 últimas linhas das 10 selecionadas pelo comando "head" (engloba apenas o capítulo 2).
     #### 4.2.3. **Operador | (Pipe)**
 -   Utilizado para digitar um comando que é executado a partir do resultado do outro. Exemplo de uso: **cat atividade-quimica.txt | grep Aldeídos**.
--   A expressão acima lê o arquivo 'atividade-quimica.txt', e o comando "grep" busca nesse arquivo linhas com a palavra "Aldeídos" e as imprime no shell.
+
+    -   A expressão acima lê o arquivo 'atividade-quimica.txt', e o comando "grep" busca nesse arquivo linhas com a palavra "Aldeídos" e as imprime no shell.
 
     #### 4.2.4 **Operador &**
 
 -   Utilizado para executar um comando seguido do outro. Exemplo de uso: **cat teste1 & cat teste2**.
--   Aqui, o shell executa o comando da esquerda primeiro, e só depois executa o da direita; por isso, sua impressão será dividida no terminal por linhas.
+
+    -   Aqui, o shell executa o comando da esquerda primeiro, e só depois executa o da direita; por isso, sua impressão será dividida no terminal por linhas.
 
     #### 4.2.5 **Operador &&**
 
 -   Utilizado para executar dois comandos paralelamente. Exemplo de uso: **cat teste1 && cat teste2**.
--   Nesse exemplo, o shell vai imprimir simultaneamente os dois arquivos no terminal sem nenhuma separação.
+    -   Nesse exemplo, o shell vai imprimir simultaneamente os dois arquivos no terminal sem nenhuma separação.
 -   Outro exemplo comum: **mkdir diretorioX && cd diretorioX**; o diretório foi criado e rapidamente o usuário já entra nele.
 
     ### 4.3 COMANDOS DE PAGINAÇÃO
 
--   **more**: Usado com uma Pipe após o "cat", separa o arquivo em partes e não imprime tudo logo no terminal. Assim, você pode visualizá-lo por partes e melhor. Exemplo de uso: **cat fundamentos-linux.md | more**. -**less**: Com a mesma função do "more" e a mesma sintaxe, a diferença é que nesse caso é possível rolar pelo arquivo como se fosse um documento.
+-   **more**: Usado com uma Pipe após o "cat", separa o arquivo em partes e não imprime tudo logo no terminal. Assim, você pode visualizá-lo por partes e melhor. Exemplo de uso: **cat fundamentos-linux.md | more**.
+
+-   **less**: Com a mesma função do "more" e a mesma sintaxe, a diferença é que nesse caso é possível rolar pelo arquivo como se fosse um documento.
 
     ### 4.4 OUTROS COMANDOS
 
 -   **find**: Utilizado para procurar arquivos dentro de um determinado diretório. Exemplo de uso: **find Downloads -iname if.pdf** (sintaxe: find [nomeDiretorio] [opções] [nomeArquivo]). Opções comuns: "find . -name '\*.txt'" (procura no diretório corrente todos os arquivos com extensão .txt), "find / -iname hostname -type f" (procura a partir da pasta raiz pelo arquivo 'hostname', independente se está escrito com letras maiusculas ou minusculas; -type f especifica que o objeto a ser buscado é um arquivo, "file").
+
+## 5. DIRETÓRIOS LINUX DENTRO DA PASTA RAIZ (/)
+
+-   **/**bin**/**: guarda os binários (executáveis) do Linux.
+-   **/**boot**/**: arquivos do sistema de boot, para inicializar o sistema.
+-   **/**dev**/**: contém arquivos dos dispositivos que se conectam ao hardware, como drivers de rede, teclado, som, etc.
+-   **/**etc**/**: arquivos de configuração e personalização do sistema, como nome do computador.
+-   **/**home**/**: pasta que guarda os usuários comuns e seus diretórios.
+-   **/**lib**/**: bibliotecas essenciais do sistema e módulos do Kernel (núcleo do S.O)
+-   **/**media**/** e **/**mnt**/**: arquivos de montagem de dispositivos (hd externo, pen-drive, etc.)
+-   **/**opt**/**: diretório que armazena programas não-oficiais da distribuição instalados pelo usuário; ao guardar programas aqui, eles são impedidos de agirem contra o seu S.O para ataques maliciosos, por exemplo.
+-   **/**sbin**/**: armazena executáveis que representam comandos administrativos (como "shutdown").
+-   **/**srv**/**: guarda dados de serviços fornecidos pleo sistema.
+-   **/**tmp**/**: área que guarda arquivos temporários
+-   **/**usr**/**: guarda os arquivos dos usuários do sistema, seus programas e binários também.
+-   **/**var**/**: diretório com arquivos variáveis gerados pelos programas do sistema, como logs e cache.
+-   **/**root**/**: diretório do usuário **root** (o superusuário, tem poder total sobre o sistema).
+-   **/**proc**/**: controlado pelo Kernel, armazena dados de memória, informações de CPU, entre outras.
+
+---
