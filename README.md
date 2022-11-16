@@ -107,4 +107,24 @@ SINTAXE DOS COMANDOS: [comando] [opções] [argumento]. Exemplo: rm (comando) -r
 -   **/**root**/**: diretório do usuário **root** (o superusuário, tem poder total sobre o sistema).
 -   **/**proc**/**: controlado pelo Kernel, armazena dados de memória, informações de CPU, entre outras.
 
+### 5.1 ALGUNS DIRETÓRIOS DE INFORMAÇÕES IMPORTANTES
+
+-   **/proc/cpuinfo**: guarda dados sobre o hardware da máquina, como número de processadores, suas versões, tamanho de cache e etc.
+-   **/proc/meminfo**: dados sobre a memória RAM da máquina (total, tamanho da memória SWAP, memória ativa e inativa, etc.)
+-   **/etc/passwd**: guarda todos os usuários do sistema (root, daemon, bin, mysql, eu mesmo, etc.), mostrando nome dos usuários, a pasta de cada um, onde executam os comandos, etc.
+
+### 5.2 COMANDOS DE SISTEMA
+
+-   **lspci**: retorna todos os hardwares conectados via PCI.
+-   **lsusb**: retorna todos os dispositivos USB.
+-   **lscpu**: traz todas as informações de CPU de forma bem organizada.
+-   **lshw**: exibe a lista de todos os hardwares que compõem a máquina.
+-   **lshw --short**: mostra a mesma lista gerada pelo comando acima, mas de forma curta e mais resumida.
+-   **arch** ou **uname -m**: mostra o tipo de arquitetura do sistema (64 bits, 32 bits, entre outros).
+-   **uname**: mostra o nome do Kernel que a distribuição usa (com frequência, Linux). Outra opção: "uname -r" mostra a versão do Kernel usado.
+-   **free**: mostra todos os dados de memória RAM e SWAP do sistema; o SWAP é um tipo de memória criado a partir de uma partição no próprio disco rígido que serve como "memória virtual", uma alternativa para que caso a memória RAM fique cheia o computador não trave por inteiro.
+-   **du**: retorna o tamanho do espaço que um determinado diretório ocupa. Exemplo de uso: **du -h ~** retorna o espaço total e que cada arquivo ocupa no diretório pessoal, seguido da unidade de medida (Kb, Mb, Gb).
+-   **reboot**: reinicia a distribuição Linux.
+-   **shutdown**: desliga a distribuição Linux. Inclui as opções "-h" (halt, interrompe tudo e desliga a máquina), "-p" (power-off, mesma função do halt, além de se desligar da energia) e outras. Além disso, é importante definir o tempo após a opção ("now", "09:00", etc.)
+
 ---
