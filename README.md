@@ -25,9 +25,9 @@ SINTAXE DOS COMANDOS: [comando] [opções] [argumento]. Exemplo: rm (comando) -r
 -   **rm**: remove um diretório ou arquivo. Ex.: **rm -r atividades**. Opções comuns: "rm -r" (o -r é usado para remover diretórios), "rm -rf" (remove diretórios e seus arquivos forçadamente), "rm -i" (remove mas pergunta antes de cada remoção)
 -   **mv**: move ou renomeia arquivos/diretórios. Para renomear: mv [nomeArquivo] [novoNomeArquivo]; para mover: mv [nomeArquivo] /[caminhoDiretorioDesejado] (coloca-se o / para saber que é um diretório já existente e não um novo nome para o arquivo)
 -   **touch**: cria arquivos vazios. Ex.: **touch index.js**.
--   **cp**: copia determinado arquivo para outro diretório. Ex.: **cp index.js /home/leirdan**.
+-   **cp**: copia determinado arquivo para outro diretório. Ex.: **cp index.js /home/leirdan** (copia o arquivo "index.js" para o diretório /home/leirdan).
 -   **history**: traz na saída um histórico de todos os comandos usados no terminal.
--   **whatis**: mostra a função de determinado comando.
+-   **whatis**: mostra a função de determinado comando. Ex.: **whatis ls**.
 -   **whoami**: retorna o usuário que está logado.
 -   **cal**: exibe o calendário do presente mês.
 -   **date**: mostra o dia da semana, a hora que o comando foi dado, o mês, ano e etc.
@@ -51,6 +51,7 @@ SINTAXE DOS COMANDOS: [comando] [opções] [argumento]. Exemplo: rm (comando) -r
 -   **tac**: faz o mesmo que o cat, mas lê o arquivo de baixo para cima.
 -   **head**: imprime as 10 primeiras linhas do arquivo. Opções comuns: "head -n 33" exibe as 33 primeiras linhas de um arquivo (é possível alterar o número para imprimir quantas quiser).
 -   **tail**: imprime as 10 últimas linhas do arquivo. Opções comuns: "tail -n 44" exibe as 44 últimas linhas de um arquivo (também é possível alterar o número de linhas a serem lidas).
+-   **file**: retorna o tipo do arquivo lido. Exemplo de uso: **file README.md** (retorna o seguinte: "README.md: Unicode text, UTF-8 text, with very long lines (520)").
     ### 4.2 COMANDOS DE REDIRECIONAMENTO
     #### 4.2.1. **Operador >**
 -   Atribui a saída de um comando para dentro de um novo arquivo. Ex.: **head -n 5 fundamentos-linux.md > introducao-linux.md**
@@ -117,7 +118,7 @@ SINTAXE DOS COMANDOS: [comando] [opções] [argumento]. Exemplo: rm (comando) -r
 
 -   **lspci**: retorna todos os hardwares conectados via PCI.
 -   **lsusb**: retorna todos os dispositivos USB.
--   **lscpu**: traz todas as informações de CPU de forma bem organizada.
+-   **lscpu**: traz todas as informações de CPU (processador) de forma bem organizada.
 -   **lshw**: exibe a lista de todos os hardwares que compõem a máquina.
 -   **lshw --short**: mostra a mesma lista gerada pelo comando acima, mas de forma curta e mais resumida.
 -   **arch** ou **uname -m**: mostra o tipo de arquitetura do sistema (64 bits, 32 bits, entre outros).
