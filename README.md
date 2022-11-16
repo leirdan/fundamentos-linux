@@ -2,10 +2,10 @@
 
 ## 1. INTRODUÇÃO
 
--   Linux é, na verdade, o Kernel (núcleo) do sistema operacional, que faz a comunicação entre o hardware e o sistema operacional.
--   Desenvolvido por inúmeros desenvolvedores e instituições atualmente.
+-   Linux é, na verdade, o **Kernel** (núcleo) do sistema operacional, que faz a comunicação entre o hardware e o sistema operacional. O sistema operacional onde o kernel Linux atua é, quase sempre, o **GNU**, nascido do Projeto GNU, o qual busca criar um sistema operacional livre, composto apenas de softwares livres.
+-   É desenvolvido por inúmeros desenvolvedores e instituições atualmente.
 -   É multitarefa (realiza muitas tarefas simultaneamente) e multiusuário (permite a criação de várias contas e que estas possam acessar os mesmos arquivos).
--   Existe todo o tipo de distribuições linux espalhados por aí: são "versões" do Linux que contém características próprias de configurações, interface, entre diversas outras especifidades. Ex.: Ubuntu, Fedora, Manjaro, Red Hat, Kali, etc.
+-   Existe todo o tipo de distribuições Linux espalhados por aí: são "versões" do GNU/Linux que contém características próprias de configurações, interface, entre diversas outras especifidades. Ex.: Ubuntu, Fedora, Manjaro, Red Hat, Kali, etc.
 
 ## 2. SHELL
 
@@ -126,5 +126,25 @@ SINTAXE DOS COMANDOS: [comando] [opções] [argumento]. Exemplo: rm (comando) -r
 -   **du**: retorna o tamanho do espaço que um determinado diretório ocupa. Exemplo de uso: **du -h ~** retorna o espaço total e que cada arquivo ocupa no diretório pessoal, seguido da unidade de medida (Kb, Mb, Gb).
 -   **reboot**: reinicia a distribuição Linux.
 -   **shutdown**: desliga a distribuição Linux. Inclui as opções "-h" (halt, interrompe tudo e desliga a máquina), "-p" (power-off, mesma função do halt, além de se desligar da energia) e outras. Além disso, é importante definir o tempo após a opção ("now", "09:00", etc.)
+
+## 6. FUNDAMENTOS DE REDES
+
+-   "Rede de computadores" é um conjunto de equipamentos interligados a fim de trocarem informações e compartilharem recursos, como impressoras, softwares, arquivos, etc.
+-   Denomina-se "nó" algum equipamento que está integrado dentro da rede (computador, celular, roteador, etc.).
+-   Existem divisões de rede baseada no seu alcance: a 1) **'World Area Network'**, rede WAN, de área mundial e geograficamente distribuída; a 2) **'Metropolitan Area Network'**, rede MAN, que conecta desde redes locais em uma área metropolitana até redes de duas cidades; e 3) **'Local Area Network'**, rede LAN, uma rede que está dentro de apenas um local e abastece apenas este.
+
+### 6.1 PROTOCOLOS
+
+-   São a "linguagem" usada pelos dispositivos de uma rede para que eles consigam se entender.
+-   São exemplos de protocolos:
+    -   **IP**: protocolo de Internet, gera o Endereço IP, que é uma sequência de números que identifica seu dispositivo na rede (local e mundial);
+    -   **ICMP**: protocolo que provém mensagens de controle na comunicação entre os nós; usado para determinar se os dados estão chegando ao destino;
+    -   **DNS**: protocolo responsável por atribuir nomes a endereços IP (e vice-versa) e manter uma tabela com esses dados; por exemplo, atribuir o IP 192.168.175.32 a determinado site da internet.
+
+### 6.2 INTERFACES DE REDE
+
+-   São as responsáveis por estabelecer a comunicação entre dispositivos em uma rede. Podem ser desde softwares até hardwares (como uma placa de rede).
+-   No GNU/Linux, as interfaces estão no diretório **/dev**, e são criadas pelos softwares de forma dinâmica (quando requisitado).
+-   Exemplos são a interface **eth0**, que representa uma placa de rede Ethernet, e a interface de **loopback**, criada para que o usuário consiga fazer conexões consigo mesmo sem interferir na rede (_importantíssima quando estamos desenvolvendo uma aplicação Web com Node.js por exemplo, onde o servidor não interfere na rede_). Por padrão, a interface loopback tem o endereço IP 127.0.0.1.
 
 ---
