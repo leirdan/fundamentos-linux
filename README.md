@@ -38,6 +38,12 @@ SINTAXE DOS COMANDOS: [comando] [opções] [argumento]. Exemplo: rm (comando) -r
 
 -   Digitar "!!" no terminal faz seu último comando digitado ser executado novamente.
 
+### 3.2 ESPECIAL
+
+-   Digitar a palavra **sudo** antes de qualquer outro comando (como em **sudo pacman -S nodejs**, um comando de instalação a partir do gerenciador de pacotes "Pacman") faz o comando ser executado pelo usuário em um "nível mais elevado", como **superusuário**, ou **root**.
+-   Essa palavra é necessária muitas vezes para executar comandos com algum tipo de risco, adentrar certos diretórios protegidos, definir permissões, entre diversas outras tarefas. Isso porque o usuário root tem todos os privilégios de fazer o que quiser com a máquina. Então, tome cuidado.
+-   Para que o comando seja executado a partir do "sudo", você precisa informar a sua senha de usuário antes de executar.
+
 ## 4. REDIRECIONAMENTO E MANIPULAÇÃO DE ARQUIVOS
 
 -   Ao criar um arquivo vazio com o comando _touch_, pode-se usar o editor de texto "**nano**" para inserir conteúdo diretamente no arquivo
@@ -139,6 +145,7 @@ SINTAXE DOS COMANDOS: [comando] [opções] [argumento]. Exemplo: rm (comando) -r
 -   São a "linguagem" usada pelos dispositivos de uma rede para que eles consigam se entender.
 -   São exemplos de protocolos:
     -   **IP**: protocolo de Internet, gera o Endereço IP, que é uma sequência de números que identifica seu dispositivo na rede (local e mundial);
+        -   **Importante** - seu endereço IP local e mundial são diferentes, e podem ser dinâmicos (mutáveis) ou fixos.
     -   **ICMP**: protocolo que provém mensagens de controle na comunicação entre os nós; usado para determinar se os dados estão chegando ao destino;
     -   **DNS**: protocolo responsável por atribuir nomes a endereços IP (e vice-versa) e manter uma tabela com esses dados; por exemplo, atribuir o IP 192.168.175.32 a determinado site da internet.
 
@@ -147,5 +154,17 @@ SINTAXE DOS COMANDOS: [comando] [opções] [argumento]. Exemplo: rm (comando) -r
 -   São as responsáveis por estabelecer a comunicação entre dispositivos em uma rede. Podem ser desde softwares até hardwares (como uma placa de rede).
 -   No GNU/Linux, as interfaces estão no diretório **/dev**, e são criadas pelos softwares de forma dinâmica (quando requisitado).
 -   Exemplos são a interface **eth0**, que representa uma placa de rede Ethernet, e a interface de **loopback**, criada para que o usuário consiga fazer conexões consigo mesmo sem interferir na rede (_importantíssima quando estamos desenvolvendo uma aplicação Web com Node.js por exemplo, onde o servidor não interfere na rede_). Por padrão, a interface loopback tem o endereço IP 127.0.0.1.
+
+### 6.3 COMANDOS DE REDES
+
+-   Importante: para executar esses comandos, instale o pacote **net-tools** na sua distribuição usando o seu gerenciador de pacotes (apt para Ubuntu, pacman para Manjaro, entre outros).
+-   **ifconfig**: exibe todas as interfaces de rede do computador e informações como endereço IPv4 na rede local, máscara de sub rede, endereço IPv6, endereço MAC (da placa de rede, fixa) e outras. As minhas são "wlp0s20f3", uma interface de rede wireless (sem fio), e "lo", a interface loopback.
+-   **hostname -I** & **hostname -i**: mostra o endereço IP da máquina da rede e o endereço da interface de rede loopback, respectivamente.
+-   **who**: retorna o usuário que está usando o computador e quando ele entrou.
+-   **ping [endereçoIpOuNomeDoHost]**: comando que faz parte do protocolo ICMP (enviando mensagens de teste para outro host para testar a conexão). Exemplo de uso: **ping www.google.com**.
+-   **dig**: traz informações de DNS (protocolo que atribui nome a endereços IP). Exemplo de uso: **dig www.google.com** (traz, entre outras informações, o endereço IP correspondente ao nome "www.google.com"). Para saber apenas o endereço IP do outro host, usa-se "dig [nomeHost] +short".
+-   **traceroute**: imprime no terminal uma lista de cada host que é percorrido até chegar num host específico, como o do Google.
+-   **whois**: comando que traz muitas informações (não apenas de rede) sobre determinado domínio, como "whois youtube", "whois netflix"...
+-   **finger**: informa todas as informações do usuário que está logado na máquina.
 
 ---
