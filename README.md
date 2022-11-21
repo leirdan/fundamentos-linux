@@ -107,7 +107,7 @@ SINTAXE DOS COMANDOS: [comando] [opções] [argumento]. Exemplo: rm (comando) -r
 -   **/**media**/** e **/**mnt**/**: arquivos de montagem de dispositivos (hd externo, pen-drive, etc.)
 -   **/**opt**/**: diretório que armazena programas não-oficiais da distribuição instalados pelo usuário; ao guardar programas aqui, eles são impedidos de agirem contra o seu S.O para ataques maliciosos, por exemplo.
 -   **/**sbin**/**: armazena executáveis que representam comandos administrativos (como "shutdown").
--   **/**srv**/**: guarda dados de serviços fornecidos pleo sistema.
+-   **/**srv**/**: guarda dados de serviços fornecidos pelo sistema.
 -   **/**tmp**/**: área que guarda arquivos temporários
 -   **/**usr**/**: guarda os arquivos dos usuários do sistema, seus programas e binários também.
 -   **/**var**/**: diretório com arquivos variáveis gerados pelos programas do sistema, como logs e cache.
@@ -194,5 +194,32 @@ SINTAXE DOS COMANDOS: [comando] [opções] [argumento]. Exemplo: rm (comando) -r
 -   **addgroup** ou **groupadd**: cria um novo grupo no sistema. Exemplo de uso: **groupadd phantasystar**.
 -   **gpasswd -a**: permite associar um usuário já existente a um grupo. Exemplo de uso: **gpasswd lutz phantasystar** - lutz: usuário; phantasystar: grupo. Com a opção "-d", é possível remover o usuário de um grupo. Exemplo: **gpasswd -d rockman phantasystar**.
 -   **groupdel**: remove um grupo. Exemplo de uso: **groupdel revolver**.
+
+### 7.3 COMO FUNCIONAM AS PERMISSÕES
+
+-   As permissões de diretórios e arquivos servem para definir o que cada usuário pode ou não fazer com tal diretório/arquivo. As permissões são 3: **read** (ler), **write** (escrever) e **execution** (executar).
+    -   Na prática, serve para **restringir o acesso** de determinados usuários em certos lugares. Por exemplo, impedir que um usuário recém-criado possa acessar a pasta pessoal de um outro usuário.
+-   Permissões de um documento ou pasta podem ser verificadas a partir do comando **ls -l**, que tem a seguinte saída: **-rw------- 1 leirdan leirdan 28356 nov 16 16:09 data-machine**
+-   A linha acima é apenas um dos arquivos do meu diretório pessoal. Foram listadas várias informações, como o usuário que criou (leirdan), o grupo que está associado (leirdan), a data de criação (nov 16) e etc., mas vamos focar nessas letrinhas e tracinhos do começo.
+    -   Cada espaço de **-rw-------** representa algo:
+        -   o 1º espaço, se estiver preenchido com um "d", indica que é um diretório. Como está vazio, indica que é um **arquivo**.
+        -   do 2º ao 4º espaço são as permissões de **usuário** (o que eu posso fazer nesse arquivo, o Owner). O espaço com um "r" indica que esse arquivo pode ser **lido** por mim, e o espaço com "w" indica que eu posso **escrevê-lo**. Contudo, o 4º espaço não está preenchido com um "x", indicando que eu **não posso executar esse arquivo**.
+        -   do 5º ao 7º espaço são as permissões de **grupo** (o que usuários do mesmo grupo que o meu podem fazer com esse arquivo). Como percebemos, nenhum dos espaços está preenchido, logo, os usuários do mesmo grupo que eu **não podem ler, escrever ou executar esse arquivo**.
+        -   do 8º ao 10º espaço são as permissões de **outros usuários** (que não estão no mesmo grupo que eu). Novamente, esses usuários **não tem nenhuma permissão para mexer nesse arquivo**.
+
+### 7.4 COMANDOS DE MANIPULAÇÃO DE PERMISSÕES
+- **chmod**: O comando principal para mudar as permissões de arquivos e diretórios. Existem alguns métodos para fazê-lo:
+	- **Modo Octal**: Um conjunto de três números que é passado ao comando "chmod". Cada um dos números representa uma permissão para o usuário logado (Owner), o grupo e outros usuários, respectivamente.
+		- 0: sem permissões;
+		- 1: permissão de execução, apenas;
+		- 2: permissão de escrita, apenas;
+		- 3: permissão de execução e escrita, apenas;
+		- 4: permissão de leitura, apenas;
+		- 5: permissão de leitura e execução, apenas;
+		- 6: permissão de leitura e escrita, apenas;
+		- 7: todas as permissões.
+		- Exemplo: **chmod 755 Downloads** atribui todas as permissões ao Owner e permissão de leitura e execução tanto ao grupo quanto a outros usuários no diretório Downloads.
+
+
 
 ---
