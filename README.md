@@ -175,11 +175,11 @@ SINTAXE DOS COMANDOS: [comando] [opções] [argumento]. Exemplo: rm (comando) -r
     -   Os identificadores de usuário (UID) e de grupo (GID) são gerados automaticamente pelo sistema na criação de novos usuários/grupos; os números destinados a esses identificadores são sempre igual a 1000 ou maior, pois os ID's anteriores são reservados ao sistema (número 1 ao 999).
 -   Grupos são importantes para organizar os usuários e definir as permissões destes de forma mais fácil.
 
--   Importante: apenas usuários root podem realizar a maioria dos seguintes comandos. Para poder executá-los, insira, antes de cada comando, a palavra **sudo** para obtenção desses privilégios de superusuário.
+-   Importante: apenas usuários root podem realizar a maioria dos seguintes comandos. Para poder executá-los, insira, antes de cada comando, a palavra **sudo** para obtenção desses privilégios de superusuário (enquanto usuário normal). Outra opção é simplesmente digitar **sudo su -** e trocar para o usuário root para realizar essas operações de forma direta.
 
 ### 7.1 COMANDOS DE USUÁRIOS
 
--   **adduser** ou **useradd**: adiciona um novo usuário no sistema. Exemplo de uso: **adduser gilmour**.
+-   **adduser** ou **useradd**: adiciona um novo usuário no sistema. Exemplo de uso: **adduser gilmour**. É possível adicionar também diretamente um novo usuário a um grupo inserindo o nome do grupo logo após o do usuário. Exemplo: **useradd gilmour pinkfloyd** - gilmour: usuário; pinkfloyd: grupo.
 -   **su**: troca entre os usuários do sistema. Exemplo de uso: **su gilmour**. Para fazê-lo, você deve digitar a senha do usuário para o qual deseja trocar; você será encaminhado para o diretório pessoal desse usuário, e o diretório do usuário no qual estava logado fica "inacessível" para este novo.
 -   **passwd**: altera a senha de um usuário. Exemplo de uso: **passwd gilmour**. A nova senha deve ser **segura** - não coloque senhas fáceis ou pessoais, como o nome de alguém da sua família; misture letras maiúsculas e minúsculas, números e caracteres especiais.
 -   **lastlog**: exibe informações de login de todos os usuários do sistema.
@@ -191,6 +191,8 @@ SINTAXE DOS COMANDOS: [comando] [opções] [argumento]. Exemplo: rm (comando) -r
 ### 7.2 COMANDOS DE GRUPOS
 
 -   **groups**: exibe o nome dos grupos no qual o usuário logado faz parte.
--   **addgroup** ou **groupadd**: cria um novo grupo no sistema.
+-   **addgroup** ou **groupadd**: cria um novo grupo no sistema. Exemplo de uso: **groupadd phantasystar**.
+-   **gpasswd -a**: permite associar um usuário já existente a um grupo. Exemplo de uso: **gpasswd lutz phantasystar** - lutz: usuário; phantasystar: grupo. Com a opção "-d", é possível remover o usuário de um grupo. Exemplo: **gpasswd -d rockman phantasystar**.
+-   **groupdel**: remove um grupo. Exemplo de uso: **groupdel revolver**.
 
 ---
