@@ -1,4 +1,4 @@
-## FUNDAMENTOS DE GNU/LINUX
+# FUNDAMENTOS DE GNU/LINUX
 
 ## 1. INTRODUÇÃO
 
@@ -119,6 +119,7 @@ SINTAXE DOS COMANDOS: [comando] [opções] [argumento]. Exemplo: rm (comando) -r
 -   **/proc/cpuinfo**: guarda dados sobre o hardware da máquina, como número de processadores, suas versões, tamanho de cache e etc.
 -   **/proc/meminfo**: dados sobre a memória RAM da máquina (total, tamanho da memória SWAP, memória ativa e inativa, etc.)
 -   **/etc/passwd**: guarda todos os usuários do sistema (root, daemon, bin, mysql, eu mesmo, etc.), mostrando nome dos usuários, a pasta de cada um, onde executam os comandos, etc.
+-   **etc/group**: guarda todos os grupos que existem no sistema e seus GID.
 
 ### 5.2 COMANDOS DE SISTEMA
 
@@ -166,5 +167,30 @@ SINTAXE DOS COMANDOS: [comando] [opções] [argumento]. Exemplo: rm (comando) -r
 -   **traceroute**: imprime no terminal uma lista de cada host que é percorrido até chegar num host específico, como o do Google.
 -   **whois**: comando que traz muitas informações (não apenas de rede) sobre determinado domínio, como "whois youtube", "whois netflix"...
 -   **finger**: informa todas as informações do usuário que está logado na máquina.
+
+## 7. CONTROLE DE USUÁRIOS, GRUPOS E PERMISSÕES
+
+-   Existem dois tipos de usuário no Linux, basicamente: o usuário normal e o usuário **root** (ou superusuário), este que é capaz de realizar qualquer operação no sistema operacional, pois tem mais privilégios que todos os outros.
+-   Ao criar um usuário comum, é também criado um grupo com o mesmo nome e identificador dele. Por exemplo, ao criar o usuário "Lutz" que vem com o UID (id de usuário) 1003, cria-se também um grupo chamado "Lutz" com o GID (id de grupo) 1003.
+    -   Os identificadores de usuário (UID) e de grupo (GID) são gerados automaticamente pelo sistema na criação de novos usuários/grupos; os números destinados a esses identificadores são sempre igual a 1000 ou maior, pois os ID's anteriores são reservados ao sistema (número 1 ao 999).
+-   Grupos são importantes para organizar os usuários e definir as permissões destes de forma mais fácil.
+
+-   Importante: apenas usuários root podem realizar a maioria dos seguintes comandos. Para poder executá-los, insira, antes de cada comando, a palavra **sudo** para obtenção desses privilégios de superusuário.
+
+### 7.1 COMANDOS DE USUÁRIOS
+
+-   **adduser** ou **useradd**: adiciona um novo usuário no sistema. Exemplo de uso: **adduser gilmour**.
+-   **su**: troca entre os usuários do sistema. Exemplo de uso: **su gilmour**. Para fazê-lo, você deve digitar a senha do usuário para o qual deseja trocar; você será encaminhado para o diretório pessoal desse usuário, e o diretório do usuário no qual estava logado fica "inacessível" para este novo.
+-   **passwd**: altera a senha de um usuário. Exemplo de uso: **passwd gilmour**. A nova senha deve ser **segura** - não coloque senhas fáceis ou pessoais, como o nome de alguém da sua família; misture letras maiúsculas e minúsculas, números e caracteres especiais.
+-   **lastlog**: exibe informações de login de todos os usuários do sistema.
+-   **last**: exibe uma listagem das entrada e saídas do usuário logado no sistema.
+-   **logname**: retorna o nome do usuário logado atualmente.
+-   **id**: imprime todos os identificadores do usuário logado (uid, gid e a quais grupos ele pertence).
+-   **userdel**: remove o usuário desejado. Para remover sua pasta pessoal também, adiciona-se a opção "-r". Exemplo de uso: **userdel -r gilmour**.
+
+### 7.2 COMANDOS DE GRUPOS
+
+-   **groups**: exibe o nome dos grupos no qual o usuário logado faz parte.
+-   **addgroup** ou **groupadd**: cria um novo grupo no sistema.
 
 ---
