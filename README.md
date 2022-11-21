@@ -219,7 +219,10 @@ SINTAXE DOS COMANDOS: [comando] [opções] [argumento]. Exemplo: rm (comando) -r
 		- 6: permissão de leitura e escrita, apenas;
 		- 7: todas as permissões.
 		- Exemplo: **chmod 755 Downloads** atribui todas as permissões ao Owner e permissão de leitura e execução tanto ao grupo quanto a outros usuários no diretório Downloads.
-
-
+	- **Modo Convencional**: Aqui, é passado explicitamente as permissões e para quais usuários elas vão. Exemplos de uso:
+		- **chmod u=rwx,g=rx,o=rx Downloads** - tem o mesmo efeito do último exemplo. O Owner tem todas as permissões, e grupo e outros usuários tem apenas as permissões de ler e executar.
+		- **chmod u+x heated.txt** - adiciona a permissão de execução ao arquivo "heated" para o Owner.
+		- **chmod g+w,o+r lucozade.txt** - adiciona ao arquivo "lucozade" a permissão de escrever para o grupo e a permissão de ler para outros usuários. 
+		- **chmod -R o-r meteora** - retira a permissão de ler os arquivos do diretório "meteora".
 
 ---
