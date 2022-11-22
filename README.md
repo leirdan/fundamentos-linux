@@ -208,48 +208,34 @@ SINTAXE DOS COMANDOS: [comando] [opções] [argumento]. Exemplo: rm (comando) -r
         -   do 8º ao 10º espaço são as permissões de **outros usuários** (que não estão no mesmo grupo que eu). Novamente, esses usuários **não tem nenhuma permissão para mexer nesse arquivo**.
 
 ### 7.4 COMANDOS DE MANIPULAÇÃO DE PERMISSÕES
-- **chmod**: O comando principal para mudar as permissões de arquivos e diretórios. Existem alguns métodos para fazê-lo:
-	- **Modo Octal**: Um conjunto de três números que é passado ao comando "chmod". Cada um dos números representa uma permissão para o usuário logado (Owner), o grupo e outros usuários, respectivamente.
-		- 0: sem permissões;
-		- 1: permissão de execução, apenas;
-		- 2: permissão de escrita, apenas;
-		- 3: permissão de execução e escrita, apenas;
-		- 4: permissão de leitura, apenas;
-		- 5: permissão de leitura e execução, apenas;
-		- 6: permissão de leitura e escrita, apenas;
-		- 7: todas as permissões.
-		- Exemplo: **chmod 755 Downloads** atribui todas as permissões ao Owner e permissão de leitura e execução tanto ao grupo quanto a outros usuários no diretório Downloads.
-	- **Modo Convencional**: Aqui, é passado explicitamente as permissões e para quais usuários elas vão. Exemplos de uso:
-		- **chmod u=rwx,g=rx,o=rx Downloads** - tem o mesmo efeito do último exemplo. O Owner tem todas as permissões, e grupo e outros usuários tem apenas as permissões de ler e executar.
-		- **chmod u+x heated.txt** - adiciona a permissão de execução ao arquivo "heated" para o Owner.
-		- **chmod g+w,o+r lucozade.txt** - adiciona ao arquivo "lucozade" a permissão de escrever para o grupo e a permissão de ler para outros usuários. 
-		- **chmod -R o-r meteora** - retira a permissão de ler os arquivos do diretório "meteora".
+
+-   **chmod**: O comando principal para mudar as permissões de arquivos e diretórios. Existem alguns métodos para fazê-lo:
+    -   **Modo Octal**: Um conjunto de três números que é passado ao comando "chmod". Cada um dos números representa uma permissão para o usuário logado (Owner), o grupo e outros usuários, respectivamente.
+        -   0: sem permissões;
+        -   1: permissão de execução, apenas;
+        -   2: permissão de escrita, apenas;
+        -   3: permissão de execução e escrita, apenas;
+        -   4: permissão de leitura, apenas;
+        -   5: permissão de leitura e execução, apenas;
+        -   6: permissão de leitura e escrita, apenas;
+        -   7: todas as permissões.
+        -   Exemplo: **chmod 755 Downloads** atribui todas as permissões ao Owner e permissão de leitura e execução tanto ao grupo quanto a outros usuários no diretório Downloads.
+    -   **Modo Convencional**: Aqui, é passado explicitamente as permissões e para quais usuários elas vão. Exemplos de uso:
+        -   **chmod u=rwx,g=rx,o=rx Downloads** - tem o mesmo efeito do último exemplo. O Owner tem todas as permissões, e grupo e outros usuários tem apenas as permissões de ler e executar.
+        -   **chmod u+x heated.txt** - adiciona a permissão de execução ao arquivo "heated" para o Owner.
+        -   **chmod g+w,o+r lucozade.txt** - adiciona ao arquivo "lucozade" a permissão de escrever para o grupo e a permissão de ler para outros usuários.
+        -   **chmod -R o-r meteora** - retira a permissão de ler os arquivos do diretório "meteora".
 
 ## 8. COMPACTAÇÃO, DESCOMPACTAÇÃO E ARQUIVAMENTO
 
-- Compactadores são softwares que fazem a diminuição do tamanho de um arquivo/diretório muito grande para ser enviado por e-mail, por exemplo.
-- Cada arquivo/diretório compactado é identificado por uma extensão, que é atribuida a este pelo compactador para que no novo dispositivo ele possa ser descompactado somente por aquele compactador. Extensões comuns são a .zip e .rar.
+-   Compactadores são softwares que fazem a diminuição do tamanho de um arquivo/diretório muito grande para ser enviado por e-mail, por exemplo.
+-   Cada arquivo/diretório compactado é identificado por uma extensão, que é atribuida a este pelo compactador para que no novo dispositivo ele possa ser descompactado somente por aquele compactador. Extensões comuns são a .zip e .rar.
 
-## 8.1 COMPACTADORES
-- Nos sistemas GNU/Linux, temos as seguintes opções:
-- **gzip**: muito usado e uma taxa excelente de compactação. Exemplo de uso: **gzip mayhem.txt**. Para descompactar use: **gunzip mayhem.txt.gz**. Opções comuns: "gzip -9 mayhem.txt" usa a compactação máxima possível.
-- **zip**: presente tanto no Windows quanto nos sistemas GNU/Linux. Exemplo de uso: **zip projetonode.zip projetonode** (argumento 1 é o nome do novo arquivo compactado e o argumento 2 é o arquivo/diretório a ser compactado). Para descompactar use: **unzip projetonode.zip**
-- **bzip2**: mais atual que os anteriores. Exemplo de uso: **bzip2 traitor**. Para descompactar use: **bzip2 -d traitor.bz2**
+### 8.1 COMPACTADORES
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+-   Nos sistemas GNU/Linux, temos as seguintes opções:
+-   **gzip**: muito usado e uma taxa excelente de compactação. Exemplo de uso: **gzip mayhem.txt**. Para descompactar use: **gunzip mayhem.txt.gz**. Opções comuns: "gzip -9 mayhem.txt" usa a compactação máxima possível.
+-   **zip**: presente tanto no Windows quanto nos sistemas GNU/Linux. Exemplo de uso: **zip projetonode.zip projetonode** (argumento 1 é o nome do novo arquivo compactado e o argumento 2 é o arquivo/diretório a ser compactado). Para descompactar use: **unzip projetonode.zip**
+-   **bzip2**: mais atual que os anteriores. Exemplo de uso: **bzip2 traitor**. Para descompactar use: **bzip2 -d traitor.bz2**
 
 ---
- 
