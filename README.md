@@ -252,3 +252,4 @@ SINTAXE DOS COMANDOS: [comando] [opções] [argumento]. Exemplo: rm (comando) -r
 
 
 ---
+ 
