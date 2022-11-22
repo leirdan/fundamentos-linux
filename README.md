@@ -225,4 +225,30 @@ SINTAXE DOS COMANDOS: [comando] [opções] [argumento]. Exemplo: rm (comando) -r
 		- **chmod g+w,o+r lucozade.txt** - adiciona ao arquivo "lucozade" a permissão de escrever para o grupo e a permissão de ler para outros usuários. 
 		- **chmod -R o-r meteora** - retira a permissão de ler os arquivos do diretório "meteora".
 
+## 8. COMPACTAÇÃO, DESCOMPACTAÇÃO E ARQUIVAMENTO
+
+- Compactadores são softwares que fazem a diminuição do tamanho de um arquivo/diretório muito grande para ser enviado por e-mail, por exemplo.
+- Cada arquivo/diretório compactado é identificado por uma extensão, que é atribuida a este pelo compactador para que no novo dispositivo ele possa ser descompactado somente por aquele compactador. Extensões comuns são a .zip e .rar.
+
+## 8.1 COMPACTADORES
+- Nos sistemas GNU/Linux, temos as seguintes opções:
+- **gzip**: muito usado e uma taxa excelente de compactação. Exemplo de uso: **gzip mayhem.txt**. Para descompactar use: **gunzip mayhem.txt.gz**. Opções comuns: "gzip -9 mayhem.txt" usa a compactação máxima possível.
+- **zip**: presente tanto no Windows quanto nos sistemas GNU/Linux. Exemplo de uso: **zip projetonode.zip projetonode** (argumento 1 é o nome do novo arquivo compactado e o argumento 2 é o arquivo/diretório a ser compactado). Para descompactar use: **unzip projetonode.zip**
+- **bzip2**: mais atual que os anteriores. Exemplo de uso: **bzip2 traitor**. Para descompactar use: **bzip2 -d traitor.bz2**
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 ---
