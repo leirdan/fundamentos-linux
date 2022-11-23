@@ -238,4 +238,9 @@ SINTAXE DOS COMANDOS: [comando] [opções] [argumento]. Exemplo: rm (comando) -r
 -   **zip**: presente tanto no Windows quanto nos sistemas GNU/Linux. Exemplo de uso: **zip projetonode.zip projetonode** (argumento 1 é o nome do novo arquivo compactado e o argumento 2 é o arquivo/diretório a ser compactado). Para descompactar use: **unzip projetonode.zip**
 -   **bzip2**: mais atual que os anteriores. Exemplo de uso: **bzip2 traitor**. Para descompactar use: **bzip2 -d traitor.bz2**
 
+### 8.2 ARQUIVADORES
+- Basicamente, junta vários arquivos em um só e pode ser usado aliado a um compactador para armazenar estes arquivos compactados.
+- Nos sistemas GNU/Linux, temos as seguintes opções:
+- **tar**: extremamente popular, manipulando até arquivos de sistema. Exemplo de uso: **tar -cf normanrockwell.txt.rar normanrockwell.txt mac.txt california.txt** - usamos o "tar" para arquivar três arquivos .txt diferentes em um só. Após isso, podemos compactar esse arquivo com algum compactador.
+	- Para descompactar um arquivo .tar compactado pelo gzip, por exemplo, usaremos: **tar -xvf normanrockwell.txt.rar.gz**. Não funciona com o compactador zip - é necessário descompactar primeiro para deixar apenas o arquivo .tar.
 ---
