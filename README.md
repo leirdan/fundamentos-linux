@@ -239,8 +239,43 @@ SINTAXE DOS COMANDOS: [comando] [opções] [argumento]. Exemplo: rm (comando) -r
 -   **bzip2**: mais atual que os anteriores. Exemplo de uso: **bzip2 traitor**. Para descompactar use: **bzip2 -d traitor.bz2**
 
 ### 8.2 ARQUIVADORES
-- Basicamente, junta vários arquivos em um só e pode ser usado aliado a um compactador para armazenar estes arquivos compactados.
-- Nos sistemas GNU/Linux, temos as seguintes opções:
-- **tar**: extremamente popular, manipulando até arquivos de sistema. Exemplo de uso: **tar -cf normanrockwell.txt.rar normanrockwell.txt mac.txt california.txt** - usamos o "tar" para arquivar três arquivos .txt diferentes em um só. Após isso, podemos compactar esse arquivo com algum compactador.
-	- Para descompactar um arquivo .tar compactado pelo gzip, por exemplo, usaremos: **tar -xvf normanrockwell.txt.rar.gz**. Não funciona com o compactador zip - é necessário descompactar primeiro para deixar apenas o arquivo .tar.
+
+-   Basicamente, junta vários arquivos em um só e pode ser usado aliado a um compactador para armazenar estes arquivos compactados.
+-   Nos sistemas GNU/Linux, temos as seguintes opções:
+-   **tar**: extremamente popular, manipulando até arquivos de sistema. Exemplo de uso: **tar -cf normanrockwell.txt.rar normanrockwell.txt mac.txt california.txt** - usamos o "tar" para arquivar três arquivos .txt diferentes em um só. Após isso, podemos compactar esse arquivo com algum compactador.
+    -   Para descompactar um arquivo .tar compactado pelo gzip, por exemplo, usaremos: **tar -xvf normanrockwell.txt.rar.gz**. Não funciona com o compactador zip - é necessário descompactar primeiro para deixar apenas o arquivo .tar.
+
+## 9. DAEMONS
+
+-   Daemons são, geralmente, processos que são inicializados com o sistema e são executados em segundo plano até o desligamento do PC.
+    -   Um exemplo é o daemon **"systemd"** que inicializa o sistema e ativa diversos outros processos por meio de outros daemons.
+-   Alguns serviços oferecidos pelo Systemd incluem:
+
+    -   Recursos de **paralelização** (inicializa diversos processos de uma só vez);
+    -   Inicializa outros daemons conforme a demanda;
+    -   Gerenciamento inteligente de dependência de serviço (um serviço que depende de rede só vai inicializar depois que a rede estiver disponível, por ex.);
+    -   Possibilidade de rastrear processos relacionados em conjunto.
+
+### 9.1 UNIDADES DE SERVIÇO
+
+-   Usadas pelo “systemd” para gerenciar diferentes tipos de objetos, existem três tipos principais:
+    -   **Unidades de serviço**: têm a extensão “.service”, representam os serviços do sistema e são usadas para acessar os daemons mais frequentes;
+    -   **Unidades de soquete**: têm a extensão “.socket” e representam serviços que são ativados por demanda e com menos frequência;
+    -   **Unidades de caminho**: têm a extensão “.path” e são usadas para atrasar a ativação de um serviço até que algo aconteça.
+-   O comando usado para gerenciar as unidades é o **“systemclt”**, que lista todas as unidades carregadas e ativas.
+
+### 9.2 SYSTEMCTL
+
+-   **systemctl list-units -type=service**: lista todas as unidades de **serviço** do sistema. Para ver as unidades de soquete, caminho e outras, basta trocar o tipo por **socket** ou **path**. Esse comando exibe 4 colunas:
+    -   UNIT – nome da unidade;
+    -   LOAD – se o systemd analisou e carregou a unidade na memória;
+    -   ACTIVE – se a unidade foi iniciada com êxito ou não; estado de alto nível;
+    -   SUB – mais detalhes; estado de baixo nível.
+-   **systemctl list-units**: lista todas as unidades de serviço carregadas.
+-   **systemctl list-units --all**: lista todas as unidades de serviço, ativas ou não.
+-   **systemctl list-unit-files**: lista todas as unidades instaladas e os seus status.
+-   **systemctl status dbus.service**: lista o status de uma unidade específica. "dbus.service" pode ser substituída por qualquer outra unidade.
+-   **systemctl is-active**, **systemctl is-enabled** e **systemctl is-disabled**: lista um status específico de uma unidade.
+-   **systemctl --failed**: lista todas as unidades que falharam em iniciar.
+
 ---
