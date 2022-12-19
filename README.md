@@ -278,4 +278,39 @@ SINTAXE DOS COMANDOS: [comando] [opções] [argumento]. Exemplo: rm (comando) -r
 -   **systemctl is-active**, **systemctl is-enabled** e **systemctl is-disabled**: lista um status específico de uma unidade.
 -   **systemctl --failed**: lista todas as unidades que falharam em iniciar.
 
+### 9.3 CONTROLE DOS SERVIÇOS DO SISTEMA COM SYSTEMCTL
+
+    Importante: "bluetooth.service" é apenas um exemplo. Na prática, basta apenas substituir o nome deste serviço por outro, como "apache.service".
+
+#### 9.3.1 INÍCIO E ENCERRAMENTO
+
+-   **systemctl start bluetooth.service**: inicializa um serviço;
+-   **systemctl stop bluetooth.service**: para um serviço.
+
+#### 9.3.2 REINICALIZAÇÃO E RECARREGAMENTO
+
+    A diferença entre as duas operações é que reiniciar altera a ID do processo, enquanto recarregar, não.
+
+-   **systemctl restart bluetooth.service**: reinicia um serviço;
+-   **systemctl reload bluetooth.service**: recarrega um serviço;
+-   **systemctl reload-or-restart bluetooth.service**: caso não tenha certeza se o serviço tem como ser recarregado.
+
+#### 9.3.3 LISTAGEM DE DEPENDÊNCIAS
+
+    Dependência é quando um serviço depende que outro esteja ativo para poder ser ativado.
+
+-   **systemctl list-dependences bluetooth.service**: lista a hierarquia de serviços a qual o serviço escolhido faz parte.
+
+#### 9.3.4 INCLUIR/REMOVER MÁSCARAS DE SERVIÇOS
+
+    Um sistema pode ter serviços que entram em conflito; quando você mascara um serviço, você impede a ativação desse serviço que entra em conflito com os outros.
+
+-   **systemctl mask bluetooth.service**: mascara o serviço e impede que ele seja iniciado;
+-   **systemctl unmask bluetooth.service**: desmascara o serviço mascarado, permitindo que ele seja iniciado.
+
+#### 9.3.5 HABILITAR/DESABILITAR SERVIÇOS NA INICIALIZAÇÃO (NO BOOT)
+
+-   **systemctl enable bluetooth.service**: inicia o serviço na inicialização. Na próxima vez que ligar o computador, esse serviço vai ser ativado;
+-   **systemctl disable bluetooth.service**: impede que o serviço selecionado seja inicializado automaticamente no boot.
+
 ---
